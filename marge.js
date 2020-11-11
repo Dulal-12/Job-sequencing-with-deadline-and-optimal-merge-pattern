@@ -1,4 +1,5 @@
 const mergeSort = (array) =>{
+
     if(array.length<=1){
        return array
     }
@@ -10,21 +11,31 @@ const mergeSort = (array) =>{
            return merge(mergeSort(left),mergeSort(right));
          
 }
+
+
+
  const merge = (left,right)=>{
+
    const newArray = [];
+
     while(left.length && right.length){
        if(left[0]<=right[0]){
        newArray.push(left.shift());
        }
+
        else{
          newArray.push(right.shift());
         }
+
     }
     return newArray.concat(left,right);
  }
 
 
+ 
+
 const arrayElementSort = (arrayList)=>{
+    //sort here using array length
     const length = arrayList.length;
     for (var i = 1 ; i<length;i++){
       var  item = arrayList[i];
@@ -36,19 +47,26 @@ const arrayElementSort = (arrayList)=>{
       }
     }
    
+//then merge and countValue
+       var costValue = 0;
 
        for (var i = 1; i < length; i=i+1){
           if(i==1){
             const mergeArray = [...arrayList[i], ...arrayList[i-1]];
             var result = mergeSort(mergeArray);
+            costValue += result.length;
+          
           }
           else{
             const mergeArray = [...arrayList[i], ...result];
             var result = mergeSort(mergeArray);
+            costValue += result.length;
+          
           }
          
        }
-       console.log(result);
+       console.log('final array = ',result);
+       console.log('costValue = ', costValue)
 
 }
 
